@@ -125,7 +125,7 @@ class uvm_axi4lite_drv extends uvm_driver #(uvm_axi4lite_txn);
       if (to_ctr == 31) begin
         `uvm_error("uvm_axi4lite_master_driver","AWVALID timeout");
       end       
-      @(posedge vif.clk);
+      //@(posedge vif.clk);
       vif.AWADDR  <= 32'h0;
       vif.AWPROT  <= 3'h0;
       vif.AWVALID <= 1'b0;     
@@ -144,7 +144,7 @@ class uvm_axi4lite_drv extends uvm_driver #(uvm_axi4lite_txn);
       if (to_ctr == 31) begin
         `uvm_error("uvm_axi4lite_master_driver","ARVALID timeout");
       end       
-      @(posedge vif.clk);
+      //@(posedge vif.clk);
       vif.ARADDR  <= 32'h0;
       vif.ARPROT  <= 3'h0;
       vif.ARVALID <= 1'b0;      
@@ -158,7 +158,7 @@ class uvm_axi4lite_drv extends uvm_driver #(uvm_axi4lite_txn);
       vif.WDATA  <= data;
       vif.WSTRB  <= 4'hf;
       vif.WVALID <= 1'b1;
-      @(posedge vif.clk);
+      //@(posedge vif.clk);
       for(to_ctr = 0; to_ctr <= 31; to_ctr ++) begin
          @(posedge vif.clk);
          if (vif.WREADY) break;
@@ -166,7 +166,7 @@ class uvm_axi4lite_drv extends uvm_driver #(uvm_axi4lite_txn);
       if (to_ctr == 31) begin
         `uvm_error("uvm_axi4lite_master_driver","AWVALID timeout");
       end
-      @(posedge vif.clk);
+      //@(posedge vif.clk);
       vif.WDATA  <= 32'h0;
       vif.WSTRB  <= 4'h0;
       vif.WVALID <= 1'b0;
